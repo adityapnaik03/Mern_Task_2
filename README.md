@@ -1,77 +1,96 @@
 # MERN Stack - Sign Up Feature (Task 2)
 
-This project implements a complete, end-to-end user **Sign Up** process using:
-- **Frontend**: React (Vite) styled to match the minimalist underline input design.
-- **Backend**: Express.js REST API running on Node.js.
-- **Database**: MongoDB with Mongoose (with password encryption via `bcryptjs`).
+A full-stack user registration and authentication system built using the **MERN** stack (MongoDB Atlas, Express.js, React, Node.js) with password hashing via `bcryptjs`.
+
+---
+
+## Output
+
+### 1. Sign Up Page
+Initial clean sign-up interface matching the modern rounded-card design.
+![Sign Up Page](./screenshots/1_signup_page.png)
+
+---
+
+### 2. Inputting User Credentials for Sign Up
+User entering their email and password into the registration form.
+![Inputting User Credentials](./screenshots/2_input_credentials.png)
+
+---
+
+### 3. MongoDB Atlas Collection Before Sign Up
+MongoDB Atlas database (`mern_signup_db -> users`) showing that the collection is currently empty before registration.
+![MongoDB Before Sign Up](./screenshots/3_mongodb_before.png)
+
+---
+
+### 4. Output After Pressing Sign Up Button
+The React UI displaying the green success notification banner (**"Account created successfully!"**) after the REST API processes the registration.
+![Sign Up Success](./screenshots/4_signup_success.png)
+
+---
+
+### 5. MongoDB Atlas After Sign Up (Data Stored)
+MongoDB Atlas Data Explorer showing the newly created user document stored in the cloud with timestamps and encrypted password hash (`bcrypt`).
+![MongoDB After Sign Up](./screenshots/5_mongodb_after.png)
 
 ---
 
 ## Project Structure
 
 ```text
-mern task 2/
+mern-task-2/
 ├── backend/
 │   ├── config/
-│   │   └── db.js            # MongoDB connection
+│   │   └── db.js            # MongoDB Atlas connection & DNS resolver
 │   ├── controllers/
 │   │   └── authController.js# Registration logic (bcrypt hashing, validation)
 │   ├── models/
-│   │   └── User.js          # Mongoose User schema
+│   │   └── User.js          # Mongoose User schema with email validation
 │   ├── routes/
 │   │   └── authRoutes.js    # POST /api/auth/signup route
-│   ├── .env                 # PORT and MONGO_URI
+│   ├── .env.example         # Environment template
 │   ├── package.json
 │   └── server.js            # Express app entry point
-└── frontend/
-    ├── index.html
-    ├── package.json
-    ├── vite.config.js
-    └── src/
-        ├── components/
-        │   ├── SignUp.jsx   # Sign Up form with React state & API fetch
-        │   └── SignUp.css   # Pixel-accurate underline input styling
-        ├── App.jsx
-        ├── App.css
-        └── main.jsx
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── SignUp.jsx   # Sign Up form with React state & API fetch
+│   │   │   └── SignUp.css   # Modern rounded card styling & visibility toggle
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+└── screenshots/             # Output proof screenshots
 ```
 
 ---
 
-## How to Run
+## Features
+- **Frontend**: Responsive React UI built with Vite, featuring password visibility toggle and real-time alert banners.
+- **Backend**: Express REST API endpoint (`POST /api/auth/signup`) with input validation and CORS enabled.
+- **Security**: Industry-standard password hashing using `bcryptjs` with salt rounds before storing in the database.
+- **Database**: Cloud persistence using **MongoDB Atlas**, indexing unique emails to prevent duplicate registrations.
 
-### 1. Start the Backend
-Open a terminal in the root directory:
+---
+
+## How to Run Locally
+
+### 1. Setup Backend
 ```bash
 cd backend
 npm install
+# Configure your MongoDB URI in backend/.env
 npm run dev
 ```
-* The backend will start on `http://localhost:5000`
-* It connects automatically to MongoDB (`mongodb://127.0.0.1:27017/mern_signup_db`).
-* If you are using MongoDB Atlas, update `MONGO_URI` in `backend/.env`.
+Server starts on `http://localhost:5000`.
 
----
-
-### 2. Start the Frontend (React)
-Open a second terminal:
+### 2. Setup Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-* The frontend will start on `http://localhost:5173`.
-* Open your browser and view the Sign Up page.
-
----
-
-## Testing the Flow
-1. Enter an **Email** (e.g. `alex@example.com`) and a **Password** (minimum 6 characters).
-2. Click **Sign Up**.
-3. **Verify in MongoDB**:
-   - Open MongoDB Compass or your database shell.
-   - Look inside `mern_signup_db` -> `users` collection.
-   - The password field will be stored as an encrypted hash (e.g., `$2a$10$...`), **never** in plain text.
-4. **Test Duplicate Prevention**:
-   - Try signing up again with the exact same email.
-   - Notice the error alert: *"An account with this email already exists."*
+Client starts on `http://localhost:5173`.
