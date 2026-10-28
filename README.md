@@ -36,16 +36,6 @@ MongoDB Atlas Data Explorer showing the newly created user document stored in th
 
 ---
 
----
-
-## Features
-- **Frontend**: Responsive React UI built with Vite, featuring password visibility toggle and real-time alert banners.
-- **Backend**: Express REST API endpoint (`POST /api/auth/signup`) with input validation and CORS enabled.
-- **Security**: Industry-standard password hashing using `bcryptjs` with salt rounds before storing in the database.
-- **Database**: Cloud persistence using **MongoDB Atlas**, indexing unique emails to prevent duplicate registrations.
-
----
-
 ## How to Run Locally
 
 ### 1. Setup Backend
