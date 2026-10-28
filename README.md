@@ -36,36 +36,6 @@ MongoDB Atlas Data Explorer showing the newly created user document stored in th
 
 ---
 
-## Project Structure
-
-```text
-mern-task-2/
-├── backend/
-│   ├── config/
-│   │   └── db.js            # MongoDB Atlas connection & DNS resolver
-│   ├── controllers/
-│   │   └── authController.js# Registration logic (bcrypt hashing, validation)
-│   ├── models/
-│   │   └── User.js          # Mongoose User schema with email validation
-│   ├── routes/
-│   │   └── authRoutes.js    # POST /api/auth/signup route
-│   ├── .env.example         # Environment template
-│   ├── package.json
-│   └── server.js            # Express app entry point
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── SignUp.jsx   # Sign Up form with React state & API fetch
-│   │   │   └── SignUp.css   # Modern rounded card styling & visibility toggle
-│   │   ├── App.jsx
-│   │   ├── App.css
-│   │   └── main.jsx
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-└── screenshots/             # Output proof screenshots
-```
-
 ---
 
 ## Features
