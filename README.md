@@ -32,7 +32,7 @@ The React UI displaying the green success notification banner (**"Account create
 
 ### 5. MongoDB Atlas After Sign Up (Data Stored)
 MongoDB Atlas Data Explorer showing the newly created user document stored in the cloud with timestamps and encrypted password hash (`bcrypt`).
-![MongoDB After Sign Up](./screenshots/5_mongodb_after.png)
+![MongoDB After Sign Up](./screenshots/5_mongodb_data_stored.png)
 
 ---
 
